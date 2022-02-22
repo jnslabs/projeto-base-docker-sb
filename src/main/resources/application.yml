@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sbbaseapi-db
+    username: postgres
+    password: baseapi
+  jpa:
+    hibernate:
+      ddl-auto: update
+

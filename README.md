@@ -38,3 +38,14 @@ jnsousa/springdocker         latest      25569890447b   2 minutes ago   680MB
 docker run --name springdockercontainer -p 8081:8080 jnsousa/springdocker
 ```
 
+# Criar imagem Banco Dados
+
+## Banco de Dados
+```
+docker build -f pgsbbaseapi.dockerfile -t jnsousa/pgsbbaseapi:1.0.0 .
+```
+
+## Criar container banco de dados
+```
+docker run --name "pgsbbaseapi" -p 5432:5432 -d jnsousa/pgsbbaseapi:1.0.0
+```
