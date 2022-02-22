@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  pgbaseapi:
+    build:
+      dockerfile: ./docker/pgsbbaseapi.dockerfile
+      context: .
+    image: jnsousa/pgsbbaseapi:1.0.0
+    container_name: pgsbbaseapi
+    ports:
+      - "5432"
+    networks:
+      - sbbase
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  api:
+    build:
+      dockerfile: ./docker/sbbaseapi.dockerfile
+      context: .
+    image: jnsousa/sbbaseapi:1.0.0
+    container_name: sbbaseapi
+    environment:
+      DB_HOST: pgbaseapi
+    ports:
+      - "8080:8080"
+    networks:
+      - sbbase
+    depends_on:
+      - pgbaseapi
+
+networks:
+  sbbase:
+    driver: bridge
+
+volumes:
+  pgdata:
