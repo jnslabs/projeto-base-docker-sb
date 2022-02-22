@@ -1,7 +1,7 @@
 FROM maven:3.8.4-jdk-11 as build
 LABEL maintainer "Jairo Nascimento <jaironsousa@gmail.com>"
 WORKDIR /build
-COPY . .
+COPY .. .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:11
