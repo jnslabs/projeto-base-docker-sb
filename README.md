@@ -49,3 +49,8 @@ docker build -f pgsbbaseapi.dockerfile -t jnsousa/pgsbbaseapi:1.0.0 .
 ```
 docker run --name "pgsbbaseapi" -p 5432:5432 -d jnsousa/pgsbbaseapi:1.0.0
 ```
+
+https://github.com/mesuk/SpringReadyApp
+
+https://blog.devgenius.io/securing-spring-boot-rest-api-with-spring-security-jwt-and-jpa-64ec45fb25e0
+
