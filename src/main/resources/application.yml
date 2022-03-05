@@ -14,3 +14,7 @@ management:
   security:
     enable: false
 
+springdoc:
+  swagger-ui:
+    operations-sorter: method
+
