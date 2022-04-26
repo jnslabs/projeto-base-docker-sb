@@ -1,0 +1,8 @@
+     ,--. ,--.  ,--.  ,---.   ${AnsiColor.MAGENTA},------.   ,------. ,--.   ,--.${AnsiColor.DEFAULT}
+     |  | |  ,'.|  | '   .-'  ${AnsiColor.MAGENTA}|  .-.  \  |  .---'  \  `.'  /${AnsiColor.DEFAULT}
+,--. |  | |  |' '  | `.  `-.  ${AnsiColor.MAGENTA}|  |  \  : |  `--,    \     /${AnsiColor.DEFAULT}
+|  '-'  / |  | `   | .-'    | ${AnsiColor.MAGENTA}|  '--'  / |  `---.    \   /${AnsiColor.DEFAULT}
+ `-----'  `--'  `--' `-----'  ${AnsiColor.MAGENTA}`-------'  `------'     `-'${AnsiColor.DEFAULT}
+
+${AnsiColor.BRIGHT_RED}${spring.application.name} ${spring.application.version}
+${AnsiColor.BRIGHT_YELLOW}Powered by Spring Boot ${spring-boot.version}${AnsiColor.DEFAULT}

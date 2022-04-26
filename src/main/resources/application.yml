@@ -1,4 +1,7 @@
 spring:
+  application:
+    name: sbbase
+    version: 1.0
   datasource:
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:sbbaseapi-db}
     username: ${DB_USER:postgres}
@@ -17,4 +20,5 @@ management:
 springdoc:
   swagger-ui:
     operations-sorter: method
+
 
