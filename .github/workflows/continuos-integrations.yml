@@ -28,6 +28,6 @@ jobs:
 
     - name: Push to Docker Hub Container Registry
       run: |
-        docker tag ${{ secrets.DOCKER_USERNAME }}/pgsbbaseapi:latest ${{ secrets.DOCKER_USERNAME }}/pgsbbaseapi:$(date +%s)
-        docker push ${{ secrets.DOCKER_USERNAME }}/pgsbbaseapi:$(date +%s)
-        docker push ${{ secrets.DOCKER_USERNAME }}/sbbaseapi
+#        docker tag ${{ secrets.DOCKER_USERNAME }}/pgsbbaseapi:latest ${{ secrets.DOCKER_USERNAME }}/pgsbbaseapi:$(date +%s)
+        docker push ${{ secrets.DOCKER_USERNAME }}/pgsbbaseapi:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/sbbaseapi:latest
