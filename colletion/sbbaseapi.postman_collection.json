@@ -1,0 +1,429 @@
+{
+	"info": {
+		"_postman_id": "b3bde4f5-bb84-45e0-843c-3e94c471e8d5",
+		"name": "sbbaseapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1010130"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "POST Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Jairo\",\r\n    \"sobrenome\": \"Sousa\",\r\n    \"email\": \"jns@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}:{{port}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Usuarios",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqbnNvdXNhIiwiYXV0aCI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjkxMzMxMDYzLCJleHAiOjE2OTEzMzQ2NjN9.j4rwJl8bBkK2fRJJKart2le8KXI5rJh7ARgCpmYRbyo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}:{{port}}/usuarios",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqbnNvdXNhIiwiYXV0aCI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjkxMzMxMDYzLCJleHAiOjE2OTEzMzQ2NjN9.j4rwJl8bBkK2fRJJKart2le8KXI5rJh7ARgCpmYRbyo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}:{{port}}/usuarios/1ea4d8de-e030-4d08-abb6-aa9b99c32932",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"usuarios",
+								"1ea4d8de-e030-4d08-abb6-aa9b99c32932"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Silvana\",\r\n    \"sobrenome\": \"Luz\",\r\n    \"email\": \"sls@email.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}:{{port}}/usuarios/50e4502a-4f64-4232-8abb-4f4294d92206",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"usuarios",
+								"50e4502a-4f64-4232-8abb-4f4294d92206"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE usuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}:{{port}}/usuarios/332e51f9-367e-41fe-8bd9-0ad2db2cdf04",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"usuarios",
+								"332e51f9-367e-41fe-8bd9-0ad2db2cdf04"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Security User",
+			"item": [
+				{
+					"name": "Save User admin - Public",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Jairo\",\r\n    \"sobrenome\": \"Nascimento\",\r\n    \"email\": \"jns@email.com\",\r\n    \"password\": \"1234\",\r\n    \"roles\": [\r\n        \"ROLE_ADMIN\"\r\n    ],\r\n    \"userName\": \"jnsousa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/secureUsers/public/signUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"secureUsers",
+								"public",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save User Client - Public",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Silvana\",\r\n    \"sobrenome\": \"Luz\",\r\n    \"email\": \"sls@email.com\",\r\n    \"password\": \"1234\",\r\n    \"roles\": [\r\n        \"ROLE_CLIENT\"\r\n    ],\r\n    \"userName\": \"slsousa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/secureUsers/public/signUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"secureUsers",
+								"public",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"1234\",\r\n  \"userName\": \"jnsousa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/secureUsers/public/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"secureUsers",
+								"public",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SearchUser-Admin-Client",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzbHNvdXNhIiwiYXV0aCI6W3siYXV0aG9yaXR5IjoiUk9MRV9DTElFTlQifV0sImlhdCI6MTY0NjQxODQzMiwiZXhwIjoxNjQ2NDIyMDMyfQ.9YSZRuZXV73BzgoJnjQuas6QFQHYyp6A6-XVjZeEaDQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/secureUsers/searchUser?userName=jnsousa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"secureUsers",
+								"searchUser"
+							],
+							"query": [
+								{
+									"key": "userName",
+									"value": "jnsousa"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser-Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqbnNvdXNhIiwiYXV0aCI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjQ2NDE4ODg5LCJleHAiOjE2NDY0MjI0ODl9.K_kumVis7mJsuXeyyVS7M1obCSBFNGTJ6rZ411BeHps",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/secureUsers/deleteUser?userName=slsousa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"secureUsers",
+								"deleteUser"
+							],
+							"query": [
+								{
+									"key": "userName",
+									"value": "slsousa"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllUser-Admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqbnNvdXNhIiwiYXV0aCI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjQ2NDE4ODg5LCJleHAiOjE2NDY0MjI0ODl9.K_kumVis7mJsuXeyyVS7M1obCSBFNGTJ6rZ411BeHps",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/secureUsers/getAllUser",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"secureUsers",
+								"getAllUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RefreshToken-Admin-Client",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqbnNvdXNhIiwiYXV0aCI6W3siYXV0aG9yaXR5IjoiUk9MRV9BRE1JTiJ9XSwiaWF0IjoxNjQ2NDE4ODg5LCJleHAiOjE2NDY0MjI0ODl9.K_kumVis7mJsuXeyyVS7M1obCSBFNGTJ6rZ411BeHps",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/secureUsers/refreshToken",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"secureUsers",
+								"refreshToken"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost",
+			"type": "string"
+		},
+		{
+			"key": "port",
+			"value": "8080",
+			"type": "string"
+		}
+	]
+}
