@@ -1,4 +1,4 @@
-# Projeto base docker com Spring Boot ![GitHub repo size](https://img.shields.io/github/repo-size/jnslabs/projeto-base-docker-sb) ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/jnslabs/projeto-base-docker-sb/main.yml?logo=github)
+# Projeto base docker com Spring Boot ![GitHub repo size](https://img.shields.io/github/repo-size/jnslabs/projeto-base-docker-sb) ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/jnslabs/projeto-base-docker-sb/continuos-integrations.yml?logo=github) [![Docker Hub Repo](https://img.shields.io/docker/pulls/jnsousa/sbbaseapi.svg)](https://hub.docker.com/repository/docker/jnsousa/sbbaseapi) [![Docker Hub Repo](https://img.shields.io/docker/pulls/jnsousa/pgsbbaseapi.svg)](https://hub.docker.com/repository/docker/jnsousa/pgsbbaseapi)
 <small>Projeto base como criar imagem docker de uma aplicação Spring Boot</small>
 
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
