@@ -1,5 +1,12 @@
-# Projeto base docker com Spring Boot
+# Projeto base docker com Spring Boot ![GitHub repo size](https://img.shields.io/github/repo-size/jnslabs/projeto-base-docker-sb) ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/jnslabs/projeto-base-docker-sb/main.yml?logo=github)
 <small>Projeto base como criar imagem docker de uma aplicação Spring Boot</small>
+
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 
 ## Gerar a primeira image docker
 
