@@ -1,8 +1,9 @@
 name: Continuos Integrations with GitHub Action
 
 on:
-  push:
-    branches: [ "develop" ]
+  pull_request:
+    branches: [ "main" ]
+    types: [ closed ]
 
 jobs:
 
@@ -22,3 +23,8 @@ jobs:
     - name: Docker Compose Build
       working-directory: .
       run: docker compose build
+
+    - name: Push to Docker Hub Container Registry
+      run: |
+        docker push ${{ secrets.DOCKER_USERNAME }}/pgsbbaseapi:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/sbbaseapi:latest
