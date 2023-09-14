@@ -22,7 +22,7 @@ Os arquivos dokerfile se encontram na pasta docker.
 java -jar .\target\sbbaseapi-1.0.0-SNAPSHOT.jar 
 ```
 
-### 2. Criar arquivo `Dockerfile`
+### 2. Criar arquivo ***Dockerfile***
 
 ```dockerfile
 FROM openjdk:11
@@ -37,6 +37,9 @@ ENTRYPOINT java -jar application.jar
 ```shell
 docker build -f sbbaseapi.dockerfile -t jnsousa/sbbaseapi .
 ```
+> Você deve abrir o console na pastas dos arquivos para depois executar o comando.
+
+
 ### Verificar se image foi criada
 
 ```shell
@@ -57,16 +60,12 @@ docker run --name springdockercontainer -p 8080:8080 jnsousa/sbbaseapi
 ```
 docker build -f pgsbbaseapi.dockerfile -t jnsousa/pgsbbaseapi .
 ```
+> Você deve abrir o console na pastas dos arquivos para depois executar o comando.
 
 ## Criar container banco de dados
 ```
 docker run --name "pgsbbaseapi" -p 5432:5432 -d jnsousa/pgsbbaseapi:1.0.0
 ```
-
-https://github.com/mesuk/SpringReadyApp
-
-https://blog.devgenius.io/securing-spring-boot-rest-api-with-spring-security-jwt-and-jpa-64ec45fb25e0
-
 
 ## Docker compose
 podemos gerar a build projeto com o docker composer:
@@ -111,15 +110,26 @@ volumes:
 ```
 
 * O dockerfile criar as imagens para api e o banco de dados Postgres, 
-repare o comando build ele primeiro buida o mavem para gerar o artifactory 
+repare o comando build ele primeiro builda o mavem para gerar o artifactory 
 da api, chama o arquivo dockerfile *pgsbbaseapi.dockerfile* que executa o 
 maven antes de gerar a imagem da api. 
 
-* O comando **build** só é executado se não houver a imagens nos repositorios Local oiu remoto (Dockerhub).
-Nesse caso pode até comentar esse trecho quando for rodar.
+* O comando **build** só é executado se não houver a imagens nos repositorios local ou remoto (Dockerhub).
 
 ## Github Action
 
 No diretorio `.github/workflow` estão os arquivos de configuração da pipeline no Github Action
-`continuos-integrations.yml` realiza o build na branche develop e o `continuos-integrations-main.yml` realiza quando estiver pull request para brnach main,
+`continuos-integrations.yml` realiza o build na branche develop e o `continuos-integrations-main.yml` realiza quando estiver pull request para branch **main**
 e tambem atualiza a imagem da api e BD no Dockerhub.
+
+## Referência
+
+- [sajedul-karim/SpringReadyApp](https://github.com/mesuk/SpringReadyApp)
+- [Securing REST API with Spring Security, JWT, and JPA](https://blog.devgenius.io/securing-spring-boot-rest-api-with-spring-security-jwt-and-jpa-64ec45fb25e0)
+
+
+
+
+
+
+
