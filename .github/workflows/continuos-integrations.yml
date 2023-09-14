@@ -1,7 +1,9 @@
-name: Continuos Integrations with GitHub Action
+name: Continuos Integrations
 
 on:
   push:
+    branches: ['feature/**', 'develop']
+  pull_request:
     branches: [ "develop" ]
 
 jobs:

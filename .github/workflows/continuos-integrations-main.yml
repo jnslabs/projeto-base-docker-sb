@@ -1,4 +1,4 @@
-name: Continuos Integrations with GitHub Action
+name: Continuos Integrations
 
 on:
   pull_request:
