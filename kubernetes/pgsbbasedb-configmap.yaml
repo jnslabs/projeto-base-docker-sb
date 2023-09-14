@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pgsbbase-config-map
+data:
+  pgsbbase-server: pgsbbase-db
+  pgsbbase-database-name: sbbaseapi-db
+  pgsbbase-user-username: postgres

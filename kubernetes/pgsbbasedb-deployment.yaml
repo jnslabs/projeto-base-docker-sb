@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pgsbbase-db
+  labels:
+    app: pg-base-db
+spec:
+  ports:
+    - port: 5432
+  selector:
+    app: pg-base-db
+    tier: postgres
+  clusterIP: None
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pgsbbase-pvc
+  labels:
+    app: pg-base-db
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgsbbase-db
+  labels:
+    app: pg-base-db
+spec:
+  selector:
+    matchLabels:
+      app: pg-base-db
+      tier: postgres
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: pg-base-db
+        tier: postgres
+    spec:
+      containers:
+        - image: jnsousa/pgsbbaseapi
+          name: pgsbbase
+          livenessProbe:
+            tcpSocket:
+              port: 5432
+          ports:
+            - containerPort: 5432
+              name: postgres
+          volumeMounts:
+            - name: pgsbbase-persistent-storage
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: pgsbbase-persistent-storage
+          persistentVolumeClaim:
+            claimName: pgsbbase-pvc
