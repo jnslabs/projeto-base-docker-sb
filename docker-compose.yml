@@ -5,7 +5,7 @@ services:
     build:
       dockerfile: ./docker/pgsbbaseapi.dockerfile
       context: .
-    image: jnsousa/pgsbbaseapi:1.0.0
+    image: jnsousa/pgsbbaseapi
     container_name: pgsbbaseapi
     ports:
       - "5432"
@@ -17,7 +17,7 @@ services:
     build:
       dockerfile: ./docker/sbbaseapi.dockerfile
       context: .
-    image: jnsousa/sbbaseapi:1.0.0
+    image: jnsousa/sbbaseapi
     container_name: sbbaseapi
     environment:
       DB_HOST: pgbaseapi
