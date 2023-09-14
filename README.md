@@ -10,16 +10,20 @@
 
 ## Gerar a primeira image docker
 
-1. Primeiro tem gerar a buid da imagem
+Os arquivos dokerfile se encontram na pasta docker.
+
+### 1. Primeiro tem gerar a buid da imagem
 ```shell
 .\mvnw clean package
 ```
-Testar o jar
+
+### Testar o jar
 ```shell
-java -jar .\target\springdocker-0.0.1-SNAPSHOT.jar 
+java -jar .\target\sbbaseapi-1.0.0-SNAPSHOT.jar 
 ```
 
-2. Criar arquivo `Dockerfile`
+### 2. Criar arquivo `Dockerfile`
+
 ```dockerfile
 FROM openjdk:11
 WORKDIR /app
@@ -29,27 +33,29 @@ EXPOSE 8080
 ENTRYPOINT java -jar application.jar
 ```
 
-3. Build
+### 3. Build
 ```shell
-docker build -t jnsousa/springdocker .
+docker build -f sbbaseapi.dockerfile -t jnsousa/sbbaseapi .
 ```
-Verificar se image foi criada
+### Verificar se image foi criada
+
 ```shell
 docker images
 REPOSITORY                   TAG         IMAGE ID       CREATED         SIZE
 jnsousa/springdocker         latest      25569890447b   2 minutes ago   680MB
 ```
 
-4. Agora pode criar containers com essa imagem
+### 4. Agora pode criar containers com essa imagem
+
 ```shell
-docker run --name springdockercontainer -p 8081:8080 jnsousa/springdocker
+docker run --name springdockercontainer -p 8080:8080 jnsousa/sbbaseapi
 ```
 
 # Criar imagem Banco Dados
 
 ## Banco de Dados
 ```
-docker build -f pgsbbaseapi.dockerfile -t jnsousa/pgsbbaseapi:1.0.0 .
+docker build -f pgsbbaseapi.dockerfile -t jnsousa/pgsbbaseapi .
 ```
 
 ## Criar container banco de dados
@@ -61,3 +67,59 @@ https://github.com/mesuk/SpringReadyApp
 
 https://blog.devgenius.io/securing-spring-boot-rest-api-with-spring-security-jwt-and-jpa-64ec45fb25e0
 
+
+## Docker compose
+podemos gerar a build projeto com o docker composer:
+
+```yaml
+version: "3.8"
+
+services:
+  pgbaseapi:
+    build:
+      dockerfile: ./docker/pgsbbaseapi.dockerfile
+      context: .
+    image: jnsousa/pgsbbaseapi
+    container_name: pgsbbaseapi
+    ports:
+      - "5432"
+    networks:
+      - sbbase
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  api:
+    build:
+      dockerfile: ./docker/sbbaseapi.dockerfile
+      context: .
+    image: jnsousa/sbbaseapi
+    container_name: sbbaseapi
+    environment:
+      DB_HOST: pgbaseapi
+    ports:
+      - "8080:8080"
+    networks:
+      - sbbase
+    depends_on:
+      - pgbaseapi
+
+networks:
+  sbbase:
+    driver: bridge
+
+volumes:
+  pgdata:
+```
+
+* O dockerfile criar as imagens para api e o banco de dados Postgres, 
+repare o comando build ele primeiro buida o mavem para gerar o artifactory 
+da api, chama o arquivo dockerfile *pgsbbaseapi.dockerfile* que executa o 
+maven antes de gerar a imagem da api. 
+
+* O comando **build** só é executado se não houver a imagens nos repositorios Local oiu remoto (Dockerhub).
+Nesse caso pode até comentar esse trecho quando for rodar.
+
+## Github Action
+
+No diretorio `.github/workflow` estão os arquivos de configuração da pipeline no Github Action
+`continuos-integrations.yml` realiza o build na branche develop e o `continuos-integrations-main.yml` realiza quando estiver pull request para brnach main,
+e tambem atualiza a imagem da api e BD no Dockerhub.
